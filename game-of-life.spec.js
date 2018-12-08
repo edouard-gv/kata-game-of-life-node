@@ -85,10 +85,34 @@ test("contains", function(t) {
 });
 
 function unsortedEquals(map1, map2) {
+    if (map1.length !== map2.length) {
+        return false;
+    }
+    for (const c of map1) {
+        if (!game.contains(map2, c)) {
+            return false;
+        }
+    }
+    for (const c of map2) {
+        if (!game.contains(map1, c)) {
+            return false;
+        }
+    }
     return true;
 }
 
 test("egalité sans ordre", function(t) {
     t.true(unsortedEquals([], []));
+    t.true(unsortedEquals([[1,1]], [[1,1]]));
+    t.true(unsortedEquals([[1,1], [2,2]], [[2,2], [1,1]]));
+    t.true(unsortedEquals([[1,1], [2,2], [3,3]], [[2,2], [3,3], [1,1]]));
+    t.false(unsortedEquals([[1,1], [2,2], [3,3]], [[2,2], [3,4], [1,1]]));
+    t.false(unsortedEquals([[1,1], [2,2], [3,3]], [[1,1], [2,2]]));
+    t.false(unsortedEquals([[1,1], [2,2]], [[1,1], [2,2], [3,3]]));
+    t.false(unsortedEquals([[1,1], [2,2], [2,2]], [[1,1], [2,2]]));
+    t.false(unsortedEquals([[1,1], [2,2]], [[1,1], [2,2], [2,2]]));
+    t.false(unsortedEquals([[1,1], [1,1]], [[1,1], [1,2]]));
+    t.false(unsortedEquals([[1,1], [1,2]], [[1,1], [1,1]]));
+
     t.end();
 });
