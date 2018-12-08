@@ -9,12 +9,12 @@ function next(previous) {
 }
 
 function livingNeighboursCount(map, cell) {
-    n = 0
+    n = 0;
     for (c of neighbours(cell)) {
         if (contains(map, c)) {
             n++;
         }
-    };
+    }
     return n;
 }
 
