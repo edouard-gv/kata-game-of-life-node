@@ -1,0 +1,14 @@
+{
+  "name": "game-of-life",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run test-unit",
+    "test-unit": "tape './*.spec.js'"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "tape": "~4.9.1"
+  }
+}
