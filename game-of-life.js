@@ -8,4 +8,8 @@ function livingNeighboursCount(map, cell) {
     return 0;
 }
 
-module.exports = {next, livingNeighboursCount};
+function contains(map, cell) {
+    return false;
+}
+
+module.exports = {next, livingNeighboursCount, contains};
