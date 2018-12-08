@@ -1,7 +1,7 @@
 function next(previous) {
     newMap = [];
     for (cell of previous) {
-        if (livingNeighboursCount(previous, cell) === 2) {
+        if (livingNeighboursCount(previous, cell) === 3) {
             newMap.push(cell);
         }
     }
@@ -22,8 +22,8 @@ function neighbours(cell) {
     const x = cell[0];
     const y = cell[1];
     return [[x-1, y-1], [x, y-1], [x+1, y-1],
-            [x, y-1], [x, y+1],
-            [x+1,y-1],[x+1,y],[x+1,y+1]];
+            [x-1, y], [x+1, y],
+            [x-1,y+1],[x,y+1],[x+1,y+1]];
 }
 
 
