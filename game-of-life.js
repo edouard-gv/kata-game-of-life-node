@@ -1,5 +1,11 @@
 function next(previous) {
-    return [];
+    newMap = [];
+    for (cell of previous) {
+        if (livingNeighboursCount(previous, cell) === 2) {
+            newMap.push(cell);
+        }
+    }
+    return newMap;
 }
 
-module.exports = {next};
+module.exports = {next, livingNeighboursCount};
