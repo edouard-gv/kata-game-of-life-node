@@ -1,4 +1,5 @@
 test = require("tape");
+defined = require("defined");
 game = require("./game-of-life");
 
 // Les configurations remarquables
@@ -46,9 +47,10 @@ test("configuration stable", function(t) {
     t.end();
 });
 
-test.skip("configuration blink", function(t) {
-    t.deepEqual(game.next(blinkH), blinkV);
-    t.deepEqual(game.next(blinkV), blinkH);
+test("configuration blink", function(t) {
+    t.deepUnsortedEqual = deepUnsortedEqual;
+    t.deepUnsortedEqual(game.next(blinkH), blinkH);
+    t.deepUnsortedEqual(game.next(blinkV), blinkH);
     t.end();
 });
 
@@ -116,3 +118,13 @@ test("egalité sans ordre", function(t) {
 
     t.end();
 });
+
+function deepUnsortedEqual(a, b, msg, extra) {
+    this._assert(unsortedEquals(a, b), {
+        message : defined(msg, 'should be equivalent'),
+        operator : 'deepUnsortedEqual',
+        actual : a,
+        expected : b,
+        extra : extra
+    });
+}
