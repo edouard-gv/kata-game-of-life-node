@@ -24,7 +24,7 @@ test("un solitaire donne une carte vide", function(t) {
     t.end();
 });
 
-test.skip("configuration stable", function(t) {
+test("configuration stable", function(t) {
     t.deepEqual(game.next(stable), stable);
     t.end();
 });
