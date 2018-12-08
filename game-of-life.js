@@ -1,9 +1,16 @@
 function next(previous) {
     newMap = [];
-    for (cell of previous) {
-        if (livingNeighboursCount(previous, cell) === 3) {
+    for (const cell of previous) {
+        let n = livingNeighboursCount(previous, cell);
+        if (!contains(newMap, cell) && (n === 3 || n === 2)) {
             newMap.push(cell);
         }
+        for (const neighbour of neighbours(cell)) {
+            if (!contains(newMap, neighbour) && livingNeighboursCount(previous, neighbour) === 3) {
+                newMap.push(neighbour);
+            }
+        }
+
     }
     return newMap;
 }
