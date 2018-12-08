@@ -42,5 +42,7 @@ test.skip("voisins", function(t) {
 
 test("contains", function(t) {
     t.false(game.contains([],[0,0]));
+    t.true(game.contains([[0,1],[1,1]],[1,1]));
+    t.false(game.contains([[0,1],[1,1]],[2,1]));
     t.end();
 });
