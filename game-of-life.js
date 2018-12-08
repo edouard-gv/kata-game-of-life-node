@@ -8,4 +8,8 @@ function next(previous) {
     return newMap;
 }
 
+function livingNeighboursCount(map, cell) {
+    return 0;
+}
+
 module.exports = {next, livingNeighboursCount};
