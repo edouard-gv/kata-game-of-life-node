@@ -1,11 +1,7 @@
 test = require("tape");
+game = require("./game-of-life");
 
-test("Test vide", function(t) {
-    t.true(true);
-    t.end();
-});
-
-test.skip("Test faux", function(t) {
-    t.true(false);
+test("une carte vide donne une carte vide", function(t) {
+    t.deepEqual(game.next([]), []);
     t.end();
 });
