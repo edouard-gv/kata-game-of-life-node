@@ -1,7 +1,19 @@
 function next(previous) {
-    return previous.filter(function(cell) {
-        return livingNeighboursCount(previous, cell) === 3;
+
+    newMap = previous.filter(function(cell) {
+        const n = livingNeighboursCount(previous, cell);
+        return (n === 3 || n === 2);
     });
+
+    for (const cell of previous) {
+        for (const neighbour of neighbours(cell)) {
+            if (!contains(newMap, neighbour) && livingNeighboursCount(previous, neighbour) === 3) {
+                newMap.push(neighbour);
+            }
+        }
+    }
+
+    return newMap;
 }
 
 function livingNeighboursCount(map, cell) {
