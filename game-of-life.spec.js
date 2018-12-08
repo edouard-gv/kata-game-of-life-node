@@ -25,11 +25,22 @@ test("un solitaire donne une carte vide", function(t) {
 });
 
 test.skip("configuration stable", function(t) {
-   t.deepEqual(game.next(stable), stable);
-   t.end();
+    t.deepEqual(game.next(stable), stable);
+    t.end();
 });
 
 test("nombre de voisins vivants vide", function(t) {
     t.equals(game.livingNeighboursCount([], [1,1]), 0);
+    t.end();
+});
+
+test.skip("voisins", function(t) {
+    t.false(game.contains(game.neighbours([1,1]), [1,1]));
+    t.equals(game.neighbours([1,1]).length, 8);
+    t.end();
+});
+
+test("contains", function(t) {
+    t.false(game.contains([],[0,0]));
     t.end();
 });
