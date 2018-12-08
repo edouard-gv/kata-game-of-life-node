@@ -31,6 +31,23 @@ const stable = [[1,1],[2,1],[1,2],[2,2]];
 const blinkV = [[2,1], [2,2], [2,3]];
 const blinkH = [[1,2], [2,2], [3,2]];
 
+/**
+ * .....    .....
+ * .*...    .*...
+ * .***.    .*6*.
+ * .***. =  .585.
+ * .***.    .*7*.
+ * .**..    .*4*.
+ * Pour tester les cas d'étouffement : les rangées x=2 et y=3 doivent disparaitre
+ */
+
+const tooMuch =
+    [[1,1],
+     [1,2], [2,2], [3,2],
+     [1,3], [2,3], [3,3],
+     [1,4], [2,4], [3,4],
+     [1,5], [2,5]];
+
 
 test("une carte vide donne une carte vide", function(t) {
     t.deepEqual(game.next([]), []);
@@ -51,6 +68,17 @@ test("configuration blink", function(t) {
     t.deepUnsortedEqual = deepUnsortedEqual;
     t.deepUnsortedEqual(game.next(blinkH), blinkV);
     t.deepUnsortedEqual(game.next(blinkV), blinkH);
+    t.end();
+});
+
+test("cas d'étouffement", function(t) {
+    const next = game.next(tooMuch);
+    t.false(game.contains(next,[2,2]));
+    t.false(game.contains(next,[2,3]));
+    t.false(game.contains(next,[2,4]));
+    t.false(game.contains(next,[2,5]));
+    t.false(game.contains(next,[1,3]));
+    t.false(game.contains(next,[3,3]));
     t.end();
 });
 
