@@ -1,6 +1,6 @@
 function next(previous) {
     return previous.filter(function(cell) {
-        return livingNeighboursCount(previous, cell) === 2;
+        return livingNeighboursCount(previous, cell) === 3;
     });
 }
 
@@ -12,8 +12,8 @@ function neighbours(cell) {
     const x = cell[0];
     const y = cell[1];
     return [[x-1, y-1], [x, y-1], [x+1, y-1],
-            [x, y-1], [x, y+1],
-            [x+1,y-1],[x+1,y],[x+1,y+1]];
+            [x-1, y], [x+1, y],
+            [x-1,y+1],[x,y+1],[x+1,y+1]];
 }
 
 
