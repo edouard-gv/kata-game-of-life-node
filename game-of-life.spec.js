@@ -49,7 +49,7 @@ test("configuration stable", function(t) {
 
 test("configuration blink", function(t) {
     t.deepUnsortedEqual = deepUnsortedEqual;
-    t.deepUnsortedEqual(game.next(blinkH), blinkH);
+    t.deepUnsortedEqual(game.next(blinkH), blinkV);
     t.deepUnsortedEqual(game.next(blinkV), blinkH);
     t.end();
 });
