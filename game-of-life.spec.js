@@ -29,6 +29,12 @@ test.skip("configuration stable", function(t) {
     t.end();
 });
 
+test("nombre de voisins vivants dans une configuration stable", function(t) {
+    t.equals(game.livingNeighboursCount(stable, [1,1]), 3);
+    t.end();
+});
+
+
 test("nombre de voisins vivants vide", function(t) {
     t.equals(game.livingNeighboursCount([], [1,1]), 0);
     t.end();
