@@ -43,6 +43,14 @@ test("nombre de voisins vivants vide", function(t) {
 test("voisins", function(t) {
     t.false(game.contains(game.neighbours([1,1]), [1,1]));
     t.equals(game.neighbours([1,1]).length, 8);
+    t.true(game.contains(game.neighbours([1,1]), [0,0]));
+    t.true(game.contains(game.neighbours([1,1]), [1,0]));
+    t.true(game.contains(game.neighbours([1,1]), [2,0]));
+    t.true(game.contains(game.neighbours([1,1]), [0,1]));
+    t.true(game.contains(game.neighbours([1,1]), [2,1]));
+    t.true(game.contains(game.neighbours([1,1]), [0,2]));
+    t.true(game.contains(game.neighbours([1,1]), [1,2]));
+    t.true(game.contains(game.neighbours([1,1]), [2,2]));
     t.end();
 });
 
