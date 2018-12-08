@@ -13,6 +13,23 @@ game = require("./game-of-life");
 
 const stable = [[1,1],[2,1],[1,2],[2,2]];
 
+/**
+ * .....     .....     .....
+ * ..*..     .....     ..*..
+ * ..*.. ==> .***. ==> ..*..
+ * ..*..     .....     ..*..
+ * .....     .....     .....
+ * Configuration idem potente de rang 2, qui clignote donc
+ * next(next(blinkH)) = next(blinkV) = blinkH
+ * Vérifie
+ * que les cellules entourée de 2 cellules surivivent,
+ * que celles entourées de 3 naissent,
+ * que cellent entourée de 0 ou 1 cellule meurent
+ */
+
+const blinkV = [[2,1], [2,2], [2,3]];
+const blinkH = [[1,2], [2,2], [3,2]];
+
 
 test("une carte vide donne une carte vide", function(t) {
     t.deepEqual(game.next([]), []);
@@ -26,6 +43,12 @@ test("un solitaire donne une carte vide", function(t) {
 
 test("configuration stable", function(t) {
     t.deepEqual(game.next(stable), stable);
+    t.end();
+});
+
+test("configuration blink", function(t) {
+    t.deepEqual(game.next(blinkH), blinkV);
+    t.deepEqual(game.next(blinkV), blinkH);
     t.end();
 });
 
