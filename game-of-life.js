@@ -1,11 +1,7 @@
 function next(previous) {
-    newMap = [];
-    for (cell of previous) {
-        if (livingNeighboursCount(previous, cell) === 2) {
-            newMap.push(cell);
-        }
-    }
-    return newMap;
+    return previous.filter(function(cell) {
+        return livingNeighboursCount(previous, cell) === 2;
+    });
 }
 
 function livingNeighboursCount(map, cell) {
