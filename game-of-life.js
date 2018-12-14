@@ -5,19 +5,29 @@ function survivors(previous) {
     });
 }
 
-function next(previous) {
-
-    let newMap = survivors(previous);
-
+function births(previous) {
+    const newCells = [];
     for (const cell of previous) {
         for (const neighbour of neighbours(cell)) {
-            if (!contains(newMap, neighbour) && livingNeighboursCount(previous, neighbour) === 3) {
-                newMap.push(neighbour);
+            if (livingNeighboursCount(previous, neighbour) === 3) {
+                newCells.push(neighbour);
             }
         }
     }
+    return newCells;
+}
 
-    return newMap;
+function next(previous) {
+
+    const nextMap = survivors(previous);
+
+    for (const cell of births(previous)) {
+        if (!contains(nextMap, cell)) {
+            nextMap.push(cell);
+        }
+    }
+
+    return nextMap;
 }
 
 function livingNeighboursCount(map, cell) {
