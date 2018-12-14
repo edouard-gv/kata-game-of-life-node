@@ -5,13 +5,7 @@ function next(previous) {
 }
 
 function livingNeighboursCount(map, cell) {
-    n = 0
-    for (c of neighbours(cell)) {
-        if (contains(map, c)) {
-            n++;
-        }
-    };
-    return n;
+    return neighbours(cell).filter(c => contains(map, c)).length;
 }
 
 function neighbours(cell) {
