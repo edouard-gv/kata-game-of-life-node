@@ -8,11 +8,7 @@ function survivors(previous) {
 function births(previous) {
     const newCells = [];
     for (const cell of previous) {
-        for (const neighbour of neighbours(cell)) {
-            if (livingNeighboursCount(previous, neighbour) === 3) {
-                newCells.push(neighbour);
-            }
-        }
+        newCells.push(...(neighbours(cell).filter(neighbour => livingNeighboursCount(previous, neighbour) === 3)));
     }
     return newCells;
 }
