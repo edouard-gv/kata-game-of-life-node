@@ -1,9 +1,13 @@
-function next(previous) {
-
-    newMap = previous.filter(function(cell) {
+function survivors(previous) {
+    return previous.filter(function (cell) {
         const n = livingNeighboursCount(previous, cell);
         return (n === 3 || n === 2);
     });
+}
+
+function next(previous) {
+
+    let newMap = survivors(previous);
 
     for (const cell of previous) {
         for (const neighbour of neighbours(cell)) {
