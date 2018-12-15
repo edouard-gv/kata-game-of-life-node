@@ -107,12 +107,24 @@ test("voisins", function(t) {
     t.end();
 });
 
+//Test paramétrique (chaque ligne est un test)
 test("contains", function(t) {
     t.false(game.contains([],[0,0]));
     t.true(game.contains([[0,1],[1,1]],[1,1]));
     t.false(game.contains([[0,1],[1,1]],[2,1]));
     t.end();
 });
+
+//A ajouter à Test de Tape pour comparer des tableaux devant se comporter comme des ensembles
+function deepUnsortedEqual(a, b, msg, extra) {
+    this._assert(unsortedEquals(a, b), {
+        message : defined(msg, 'should be equivalent'),
+        operator : 'deepUnsortedEqual',
+        actual : a,
+        expected : b,
+        extra : extra
+    });
+}
 
 function unsortedEquals(map1, map2) {
     if (map1.length !== map2.length) {
@@ -131,6 +143,7 @@ function unsortedEquals(map1, map2) {
     return true;
 }
 
+//Test paramétrique (chaque ligne est un test)
 test("egalité sans ordre", function(t) {
     t.true(unsortedEquals([], []));
     t.true(unsortedEquals([[1,1]], [[1,1]]));
@@ -146,13 +159,3 @@ test("egalité sans ordre", function(t) {
 
     t.end();
 });
-
-function deepUnsortedEqual(a, b, msg, extra) {
-    this._assert(unsortedEquals(a, b), {
-        message : defined(msg, 'should be equivalent'),
-        operator : 'deepUnsortedEqual',
-        actual : a,
-        expected : b,
-        extra : extra
-    });
-}
