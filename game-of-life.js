@@ -6,11 +6,9 @@ function survivors(previous) {
 }
 
 function births(previous) {
-    const newCells = [];
-    for (const cell of previous) {
-        newCells.push(...(neighbours(cell).filter(neighbour => livingNeighboursCount(previous, neighbour) === 3)));
-    }
-    return newCells;
+    return previous.flatMap(cell =>
+        neighbours(cell).filter(neighbour => livingNeighboursCount(previous, neighbour) === 3)
+    );
 }
 
 function next(previous) {
