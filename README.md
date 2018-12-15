@@ -6,9 +6,6 @@ notamment une carte non bornée.
 L'objectif était d'utiliser le moins de librairies supplémentaires
 Ainsi&nbsp;:
 - on a préféré ne pas utiliser de typespcript, même si certains développeu.rs.ses java ou .net s'y retrouveraient peut-être plus,
-- on a préféré Tape à d'autre framework de test unitaires, comme mocha ou jest.
+- on a préféré Tape à d'autres frameworks de tests unitaires, comme mocha ou jest.
 
-
-
-Remerciements à Mathieu Eveillard pour ses conseils&nbsp;!
-
+Merci à Mathieu Eveillard et [pinage404](https://github.com/pinage404) pour leurs conseils&nbsp;!
