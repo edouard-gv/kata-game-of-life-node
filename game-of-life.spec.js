@@ -1,6 +1,28 @@
 const game = require('./game-of-life');
 const test = require('tape');
 
+function setCompare(map1, map2) {
+    if (map1.length !== map2.length) {
+        return false;
+    }
+    for (cell of map1) {
+        if (!game.contains(map2, cell)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+test('setCompare', function(t) {
+    t.true(setCompare([],[]));
+    t.true(setCompare([[0,1],[0,2]], [[0,1],[0,2]]));
+    t.false(setCompare([[0,1],[0,3]], [[0,1],[0,2]]));
+    t.false(setCompare([[0,1]], [[0,1],[0,2]]));
+    t.false(setCompare([[0,1],[0,2]], [[0,2]]));
+    t.end();
+});
+
+
 test('empty map gives empty map', function(t) {
     t.deepEqual(game.next([]), []);
     t.end();
@@ -18,7 +40,7 @@ test('convergor', function(t) {
 });
 
 test('blink', function(t) {
-    const green = [[1,2],[2,2],[3,2]];
+    const green = [[1,2], [2,2], [3,2]];
     const blue  = [[2,1], [2,2], [2,3]];
     t.deepEqual(game.next(blue), green);
     t.deepEqual(game.next(green), blue);
