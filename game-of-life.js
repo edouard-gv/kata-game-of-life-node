@@ -2,11 +2,11 @@ const next = function(previousMap) {
     newMap = [];
     for (cell of previousMap) {
         n = livingNeighboursCount(previousMap, cell)
-        if (n == 2 || n == 3) {
+        if (!contains(newMap, cell) && (n === 2 || n === 3)) {
             newMap.push(cell);
         }
-        for (neighbourCell of neighbours(cell)) {
-            if (livingNeighboursCount(previousMap, neighbourCell) === 3) {
+        for (const neighbourCell of neighbours(cell)) {
+            if (!(contains(newMap, neighbourCell)) && livingNeighboursCount(previousMap, neighbourCell) === 3) {
                 newMap.push(neighbourCell);
             }
         }
