@@ -1,41 +1,5 @@
 const game = require('./game-of-life');
-const tape = require('tape');
-const defined = require('defined');
-const addAssertion = require('extend-tape');
-
-const test = addAssertion(tape, {
-    setCompare (a, b, msg, extra) {
-        this._assert(setCompare(a, b, { strict: true }), {
-            message : defined(msg, 'should be equivalent'),
-            operator : 'setCompare',
-            actual : a,
-            expected : b,
-            extra : extra
-        });
-    }
-});
-
-function setCompare(map1, map2) {
-    if (map1.length !== map2.length) {
-        return false;
-    }
-    for (cell of map1) {
-        if (!game.contains(map2, cell)) {
-            return false;
-        }
-    }
-    return true;
-}
-
-test('setCompare', function(t) {
-    t.true(setCompare([],[]));
-    t.true(setCompare([[0,1],[0,2]], [[0,1],[0,2]]));
-    t.false(setCompare([[0,1],[0,3]], [[0,1],[0,2]]));
-    t.false(setCompare([[0,1]], [[0,1],[0,2]]));
-    t.false(setCompare([[0,1],[0,2]], [[0,2]]));
-    t.end();
-});
-
+const test = require('./my-tape');
 
 test('empty map gives empty map', function(t) {
     t.deepEqual(game.next([]), []);
