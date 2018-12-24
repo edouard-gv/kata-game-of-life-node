@@ -6,10 +6,10 @@
     "test": "npm run test-unit",
     "test-unit": "tape './*.spec.js'"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "tape": "~4.9.1",
-    "defined": "latest"
+    "defined": "latest",
+    "extend-tape": "^1.2.0",
+    "tape": "~4.9.1"
   }
 }
