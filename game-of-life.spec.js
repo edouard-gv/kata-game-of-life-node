@@ -17,6 +17,14 @@ test('convergor', function(t) {
     t.end();
 });
 
+test('blink', function(t) {
+    const green = [[1,2],[2,2],[3,2]];
+    const blue  = [[2,1], [2,2], [2,3]];
+    t.deepEqual(game.next(blue), green);
+    t.deepEqual(game.next(green), blue);
+    t.end();
+});
+
 test('neighbours size', function(t) {
     t.equal(game.neighbours([1,1]).length, 8);
     t.end();
