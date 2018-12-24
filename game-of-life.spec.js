@@ -11,6 +11,12 @@ test.skip('one cell should die', function(t) {
     t.end();
 });
 
+test('convergor', function(t) {
+    const convergor = [[1,1], [2,1], [1,2], [2,2]];
+    t.deepEquals(game.next(convergor), convergor);
+    t.end();
+});
+
 test('neighbours size', function(t) {
     t.equal(game.neighbours([1,1]).length, 8);
     t.end();
@@ -42,7 +48,3 @@ test('contains', function(t) {
     t.false(game.contains([], [0,0]));
     t.end()
 });
-
-
-
-
