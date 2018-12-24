@@ -15,11 +15,11 @@ const contains = function(map, cell) {
 
 const livingNeighbours = function(map, cell) {
     const cellNeighbours = [];
-/*        for (const c of neighbours(cell)) {
+        for (const c of neighbours(cell)) {
         if (contains(map, c)) {
             cellNeighbours.push(c);
         }
-    } */
+    }
 
     return cellNeighbours;
 };
