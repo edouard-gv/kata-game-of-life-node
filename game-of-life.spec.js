@@ -26,6 +26,17 @@ test('living-neighbours', function(t) {
     t.end();
 });
 
+test('living-neighbours-two', function(t) {
+    t.true(game.contains(game.livingNeighbours([[0,1], [1,0]], [1,1]), [0,1]));
+    t.end();
+});
+
+test('living-neighbours-two', function(t) {
+    t.true(game.contains(game.livingNeighbours([[0,1], [1,0], [1,3]], [1,1]), [1,0]));
+    t.end();
+});
+
+
 test('contains', function(t) {
     t.true(game.contains([[1,1], [2,2]], [1,1]));
     t.false(game.contains([[1,1], [2,2]], [0,0]));
