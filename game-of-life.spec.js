@@ -22,7 +22,7 @@ test('neighbours', function(t) {
 });
 
 test('living-neighbours', function(t) {
-    t.false(game.contains(game.livingNeighbours([], [1,1]), []));
+    t.deepEqual(game.livingNeighbours([], [1,1]), []);
     t.end();
 });
 
