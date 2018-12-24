@@ -26,12 +26,12 @@ test('living-neighbours', function(t) {
     t.end();
 });
 
-test.skip('living-neighbours-two', function(t) {
+test('living-neighbours-two', function(t) {
     t.true(game.contains(game.livingNeighbours([[0,1], [1,0]], [1,1]), [0,1]));
     t.end();
 });
 
-test.skip('living-neighbours-two', function(t) {
+test('living-neighbours-two', function(t) {
     t.true(game.contains(game.livingNeighbours([[0,1], [1,0], [1,3]], [1,1]), [1,0]));
     t.end();
 });
