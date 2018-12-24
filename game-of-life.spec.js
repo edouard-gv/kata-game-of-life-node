@@ -1,5 +1,7 @@
 const game = require('./game-of-life');
 const test = require('tape');
+var defined = require('defined');
+
 
 function setCompare(map1, map2) {
     if (map1.length !== map2.length) {
@@ -12,6 +14,16 @@ function setCompare(map1, map2) {
     }
     return true;
 }
+
+const tapeSetCompare = function (a, b, msg, extra) {
+    this._assert(setCompare(a, b, { strict: true }), {
+        message : defined(msg, 'should be equivalent'),
+        operator : 'setCompare',
+        actual : a,
+        expected : b,
+        extra : extra
+    });
+};
 
 test('setCompare', function(t) {
     t.true(setCompare([],[]));
@@ -42,8 +54,9 @@ test('convergor', function(t) {
 test('blink', function(t) {
     const green = [[1,2], [2,2], [3,2]];
     const blue  = [[2,1], [2,2], [2,3]];
-    t.deepEqual(game.next(blue), green);
-    t.deepEqual(game.next(green), blue);
+    t.setCompare = tapeSetCompare;
+    t.setCompare(game.next(blue), green);
+    t.setCompare(game.next(green), blue);
     t.end();
 });
 

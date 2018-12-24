@@ -9,6 +9,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "tape": "~4.9.1"
+    "tape": "~4.9.1",
+    "defined": "latest"
   }
 }
