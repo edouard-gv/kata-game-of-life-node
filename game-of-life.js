@@ -4,7 +4,10 @@ var game = {
     },
 
     neighbours: function(cell) {
-        return([[-1,-1], [0,-1], [1,-1], [-1,0], [1,0], [-1,1], [0,1], [1,1]]);
+        var x=cell[0];
+        var y=cell[1];
+
+        return([[x-1,y-1], [x,y-1], [x+1,y-1], [x-1,y], [x+1,y], [x-1,y+1], [x,y+1], [x+1,y+1]]);
     },
 
     contains: function(map, cell) {
