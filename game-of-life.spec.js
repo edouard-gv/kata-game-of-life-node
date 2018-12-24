@@ -16,7 +16,7 @@ test('neighbours size', function(t) {
     t.end();
 });
 
-test('neighbours', function(t) {
+test.skip('neighbours', function(t) {
     t.false(game.contains(game.neighbours([1,1]), [1,1]));
     t.end();
 });
