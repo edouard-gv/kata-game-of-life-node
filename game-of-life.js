@@ -1,9 +1,14 @@
-const next = function(previous) {
+const next = function(previousMap) {
     newMap = [];
-    for (c of previous) {
-        n = livingNeighboursCount(previous, c)
+    for (cell of previousMap) {
+        n = livingNeighboursCount(previousMap, cell)
         if (n == 2 || n == 3) {
-            newMap.push(c);
+            newMap.push(cell);
+        }
+        for (neighbourCell of neighbours(cell)) {
+            if (livingNeighboursCount(previousMap, neighbourCell) === 3) {
+                newMap.push(neighbourCell);
+            }
         }
     }
     return newMap;
