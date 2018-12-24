@@ -21,4 +21,13 @@ test('neighbours', function(t) {
     t.end();
 });
 
+test('contains', function(t) {
+    t.true(game.contains([[1,1], [2,2]], [1,1]));
+    t.false(game.contains([[1,1], [2,2]], [0,0]));
+    t.false(game.contains([], [0,0]));
+    t.end()
+});
+
+
+
 
