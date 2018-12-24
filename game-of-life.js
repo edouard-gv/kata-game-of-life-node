@@ -13,7 +13,7 @@ const contains = function(map, cell) {
     return map.some(c => c[0] === cell[0] && c[1] === cell[1]);
 };
 
-const livingNeighbours = function(map, cell) {
+const livingNeighboursCount = function(map, cell) {
     const cellNeighbours = [];
         for (const c of neighbours(cell)) {
         if (contains(map, c)) {
@@ -21,7 +21,7 @@ const livingNeighbours = function(map, cell) {
         }
     }
 
-    return cellNeighbours;
+    return cellNeighbours.length;
 };
 
-module.exports = {next, neighbours, livingNeighbours, contains}
+module.exports = {next, neighbours, livingNeighboursCount, contains}

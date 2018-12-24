@@ -21,21 +21,20 @@ test('neighbours', function(t) {
     t.end();
 });
 
-test('living-neighbours', function(t) {
-    t.deepEqual(game.livingNeighbours([], [1,1]), []);
+test('no-living-neighbours', function(t) {
+    t.equals(game.livingNeighboursCount([], [1,1]), 0);
     t.end();
 });
 
-test('living-neighbours-two', function(t) {
-    t.true(game.contains(game.livingNeighbours([[0,1], [1,0]], [1,1]), [0,1]));
+test('two-living-neighbours', function(t) {
+    t.equals(game.livingNeighboursCount([[0,1], [1,0]], [1,1]), 2);
     t.end();
 });
 
-test('living-neighbours-two', function(t) {
-    t.true(game.contains(game.livingNeighbours([[0,1], [1,0], [1,3]], [1,1]), [1,0]));
+test('only-two-living-neighbours', function(t) {
+    t.equals(game.livingNeighboursCount([[0,1], [1,0], [1,3]], [1,1]), 2);
     t.end();
 });
-
 
 test('contains', function(t) {
     t.true(game.contains([[1,1], [2,2]], [1,1]));
