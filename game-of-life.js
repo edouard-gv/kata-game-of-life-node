@@ -1,5 +1,12 @@
 const next = function(previous) {
-    return previous;
+    newMap = [];
+    for (c of previous) {
+        n = livingNeighboursCount(previous, c)
+        if (n == 2 || n == 3) {
+            newMap.push(c);
+        }
+    }
+    return newMap;
 };
 
 const neighbours = function(cell) {
